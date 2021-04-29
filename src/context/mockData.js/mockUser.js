@@ -20,7 +20,7 @@ export default {
   "name": "뎁csa",
   "company": "Nielsen",
   "blog": "",
-  "location": "Korea",
+  "location": "Seoul, Korea",
   "email": null,
   "hireable": null,
   "bio": null,

@@ -5,6 +5,7 @@ import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 const Card = () => {
   const {githubUser} = React.useContext(GithubContext);
   const {name, avatar_url, html_url, company, blog, bio, location, twitter_username} = githubUser;
+  
   return <Wrapper>
     <header>
       <img src={avatar_url} alt={name} />
@@ -18,7 +19,7 @@ const Card = () => {
     <div className='links'>
       <p><MdBusiness></MdBusiness>{company}</p>
       <p><MdLocationOn></MdLocationOn>{location}</p>
-      <a href={`http://${blog}`}><MdLink></MdLink></a>
+      <a href={`http://${blog}`}><MdLink></MdLink>{blog}</a>
     </div>
   </Wrapper>
 };
