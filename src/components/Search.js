@@ -24,7 +24,7 @@ const Search = () => {
       <form onSubmit={handleSubmit}>
         <div className='form-control'>
           <MdSearch />
-          <input type='text' placeholder='enter github user' 
+          <input type='text' placeholder='enter github user: username' 
           value={user} onChange={(e)=>setUser(e.target.value)}/>
           {requests > 0 && !isLoading && (<button type='submit' className='btn'>search</button>) }
         </div>

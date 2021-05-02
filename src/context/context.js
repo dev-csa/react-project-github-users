@@ -32,21 +32,16 @@ const GithubProvider = ({children}) =>{ //이건 컴포넌트임
       if(response){
         setGithubUser(response.data);
         const {login, followers_url} = response.data;
-        // 이렇게 수정하면, 화면이 한번에 패칭됨. 
-        await Promise.allSettled([
-          axios(`${rootUrl}/users/${login}/repos?per_page=100`),
-          axios(`${followers_url}?per_page=100`),
-        ]).then(results => {
-          console.log(results);
-          const [repos, followers] = results;
-          const status = 'fulfilled';
-          if(repos.status === status){
-            setRepos(repos.value.data);
-          }
-          if(followers_url.status === status){
-            setFollowers(followers.value.data);
-          }
-        }).catch(err => console.log(err) )
+        //repos
+        // https://api.github.com/users/john-smilga/repos?per_page=100
+        axios(`${rootUrl}/users/${login}/repos?per_page=100`)
+          .then(response => 
+            setRepos(response.data)
+          );
+        // followers
+        //https://api.github.com/users/john-smilga/followers
+        axios(`${followers_url}?per_page=100`)
+          .then(response => setFollowers(response.data));
       }
       else{
         toggleError(true, 'there is no user with that user name')
